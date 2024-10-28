@@ -1,0 +1,63 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.59\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "49eb5ee80789b0376a6d",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"fe2b48417ad3712c4300\",\"layouts\":[{\"id\":0,\"position\":{\"x\":222.2992009916414,\"y\":79.5886028241679,\"z\":0,\"width\":891.9412385467094,\"height\":507.7203973265884,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Sharepoint.Name\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Sharepoint.Mark)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"Sharepoint\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Name\"},\"Name\":\"Sharepoint.Name\",\"NativeReferenceName\":\"Name1\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Mark\"}},\"Function\":0},\"Name\":\"Sum(Sharepoint.Mark)\",\"NativeReferenceName\":\"Sum of Mark1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Mark\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 507.72,
+          "width": 891.94,
+          "x": 222.30,
+          "y": 79.59,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "629b7bbc705c1cc2a2e1",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0bde7f1876885bb2c940\",\"layouts\":[{\"id\":0,\"position\":{\"x\":175.64381312919815,\"y\":82.33303740431164,\"z\":0,\"width\":882.3357175162064,\"height\":504.9759627464447,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Sheet1 (2).Name\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(Sheet1 (2).Mark)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sheet1 (2)\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Name\"},\"Name\":\"Sheet1 (2).Name\",\"NativeReferenceName\":\"Name\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Mark\"}},\"Function\":0},\"Name\":\"Sum(Sheet1 (2).Mark)\",\"NativeReferenceName\":\"Mark\"}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"visualTooltip\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 504.98,
+          "width": 882.34,
+          "x": 175.64,
+          "y": 82.33,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

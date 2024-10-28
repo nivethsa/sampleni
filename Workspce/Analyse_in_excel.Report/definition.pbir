@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Analyse_in_excel.Dataset"
+    },
+    "byConnection": null
+  }
+}

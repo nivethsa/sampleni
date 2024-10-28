@@ -1,0 +1,83 @@
+table Sharepoint
+	lineageTag: 1c5c56c7-82bf-4ec8-9b2b-048f321bb153
+
+	column Name
+		dataType: string
+		lineageTag: 33240cad-85af-4b86-b919-67c2bd64796e
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Roll number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 63235109-8a9d-4964-9c51-3b66fc480b89
+		summarizeBy: sum
+		sourceColumn: Roll number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		lineageTag: a9421fba-426f-46c6-887f-1beb3213d8ee
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: f9d42d04-377d-40da-9ed3-de2acf0babe3
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 83105ac2-991b-4419-8fdc-47dee8d5eb18
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: e87a39b4-5274-4ff4-ac11-97c32cd130ce
+		summarizeBy: none
+		sourceColumn: Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Average
+		dataType: string
+		lineageTag: 253f5fd3-c1b1-4a04-80dd-01ed33f511ca
+		summarizeBy: none
+		sourceColumn: Average
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sharepoint = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://microsoftapc.sharepoint.com/teams/angoswamTeam", [ApiVersion = 15]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each Text.Contains([Name], "Test_Dataset")),
+				    #"Filtered Hidden Files1" = Table.SelectRows(#"Filtered Rows", each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"Name", type text}, {"Roll number", Int64.Type}, {"Mark", Int64.Type}, {"Department", type text}, {"Gender", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Name", "Roll number", "Mark", "Department", "Gender"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Removed Other Columns", "Grade", each if [Mark] <= 50 then "B" else "A"),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "Average", each if [Mark] <= 50 then "0-50" else "50-100")
+				in
+				    #"Added Conditional Column1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
