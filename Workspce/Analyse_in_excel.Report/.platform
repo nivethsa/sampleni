@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Analyse_in_excel"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0d8f2e0c-2998-4ff2-bea3-7a2bc6488e45"
+  }
+}
